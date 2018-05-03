@@ -24,5 +24,9 @@ cat $DIR/../manifests/ingress-controller/default-backend.yaml            | kubec
 cat $DIR/../manifests/ingress-controller/configmap.yaml                  | kubectl create --namespace=$NAMESPACE -f -
 cat $DIR/../manifests/ingress-controller/tcp-services-configmap.yaml     | kubectl create --namespace=$NAMESPACE -f -
 cat $DIR/../manifests/ingress-controller/udp-services-configmap.yaml     | kubectl create --namespace=$NAMESPACE -f -
+cat $DIR/../manifests/ingress-controller/namespace-rolebinding.yaml      | kubectl create --namespace=$NAMESPACE -f -
+kubectl create clusterrolebinding nginx-ingress-clusterrole-nisa-binding-$NAMESPACE \
+    --clusterrole=nginx-ingress-clusterrole \
+    --serviceaccount=$NAMESPACE:nginx-ingress-serviceaccount
 cat $DIR/../manifests/ingress-controller/with-rbac.yaml                  | kubectl create --namespace=$NAMESPACE -f -
 cat $DIR/../manifests/ingress-controller/service-nodeport.yaml           | kubectl create --namespace=$NAMESPACE -f -

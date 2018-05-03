@@ -13,7 +13,7 @@ spec:
         app: ingress-nginx
     spec:
       terminationGracePeriodSeconds: 0
-      #serviceAccountName: nginx-ingress-serviceaccount
+      serviceAccountName: nginx-ingress-serviceaccount
       containers:
         - name: nginx-ingress-controller
           image: nginx-ingress-controller:e2e
